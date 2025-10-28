@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMP N 2 Wonokerto - Website Resmi</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Konfigurasi Font (Inter) dan Skema Warna -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'krem-dasar': '#FEFCE8', // Cream yang sangat terang
+                        'biru-muda': '#87CEEB',  // Light Sky Blue
+                        'biru-aksen': '#0C4A6E', // Navy/Biru Tua untuk kontras
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Mengatur font default menjadi Inter */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Smooth scroll untuk navigasi */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Styling spesifik untuk kartu profil Guru/Staff */
+        /* Kelas staff-card dihapus karena diganti tabel */
+    </style>
+</head>
+<body class="bg-krem-dasar text-gray-800 font-sans">
+
+    <!-- 1. Navigasi Bar (Header) -->
+    <header class="sticky top-0 z-50 bg-biru-muda shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Nama Sekolah -->
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-xl font-extrabold text-biru-aksen tracking-wider">
+                        SMP N 2 Wonokerto
+                    </a>
+                </div>
+                
+                <!-- Menu Desktop -->
+                <nav class="hidden md:flex space-x-6 text-sm font-medium">
+                    <a href="#home" class="text-biru-aksen hover:text-white transition duration-300 p-2 rounded-lg hover:bg-biru-aksen">Home</a>
+                    <a href="#profil" class="text-biru-aksen hover:text-white transition duration-300 p-2 rounded-lg hover:bg-biru-aksen">Profil Sekolah</a>
+                    <a href="#visi-misi" class="text-biru-aksen hover:text-white transition duration-300 p-2 rounded-lg hover:bg-biru-aksen">Visi & Misi</a>
+                    <a href="#akademik" class="text-biru-aksen hover:text-white transition duration-300 p-2 rounded-lg hover:bg-biru-aksen">Akademik</a>
+                    <a href="#prestasi" class="text-biru-aksen hover:text-white transition duration-300 p-2 rounded-lg hover:bg-biru-aksen">Prestasi</a>
+                    <a href="#ekstrakurikuler" class="text-biru-aksen hover:text-white transition duration-300 p-2 rounded-lg hover:bg-biru-aksen">Ekstrakurikuler</a>
+                    <a href="#guru" class="text-biru-aksen hover:text-white transition duration-300 p-2 rounded-lg hover:bg-biru-aksen">Guru & Staff</a>
+                    <a href="#galeri" class="text-biru-aksen hover:text-white transition duration-300 p-2 rounded-lg hover:bg-biru-aksen">Galeri</a>
+                    <!-- Menu 'Kegiatan' Dihapus -->
+                    <a href="#kontak" class="text-biru-aksen hover:text-white transition duration-300 p-2 rounded-lg hover:bg-biru-aksen">Kontak</a>
+                </nav>
+
+                <!-- Tombol Menu Mobile -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" type="button" class="text-biru-aksen hover:text-white p-2 rounded-md hover:bg-biru-aksen focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-expanded="false">
+                        <!-- Ikon Hamburger/X -->
+                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile (Tersembunyi secara default) -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-biru-muda/95 shadow-md">
+                <a href="#home" class="block text-biru-aksen hover:text-white transition duration-300 px-3 py-2 rounded-md text-base font-medium hover:bg-biru-aksen">Home</a>
+                <a href="#profil" class="block text-biru-aksen hover:text-white transition duration-300 px-3 py-2 rounded-md text-base font-medium hover:bg-biru-aksen">Profil Sekolah</a>
+                <a href="#visi-misi" class="block text-biru-aksen hover:text-white transition duration-300 px-3 py-2 rounded-md text-base font-medium hover:bg-biru-aksen">Visi & Misi</a>
+                <a href="#akademik" class="block text-biru-aksen hover:text-white transition duration-300 px-3 py-2 rounded-md text-base font-medium hover:bg-biru-aksen">Akademik</a>
+                <a href="#prestasi" class="block text-biru-aksen hover:text-white transition duration-300 px-3 py-2 rounded-md text-base font-medium hover:bg-biru-aksen">Prestasi</a>
+                <a href="#ekstrakurikuler" class="block text-biru-aksen hover:text-white transition duration-300 px-3 py-2 rounded-md text-base font-medium hover:bg-biru-aksen">Ekstrakurikuler</a>
+                <a href="#guru" class="block text-biru-aksen hover:text-white transition duration-300 px-3 py-2 rounded-md text-base font-medium hover:bg-biru-aksen">Guru & Staff</a>
+                <a href="#galeri" class="block text-biru-aksen hover:text-white transition duration-300 px-3 py-2 rounded-md text-base font-medium hover:bg-biru-aksen">Galeri</a>
+                <!-- Menu 'Kegiatan' Dihapus -->
+                <a href="#kontak" class="block text-biru-aksen hover:text-white transition duration-300 px-3 py-2 rounded-md text-base font-medium hover:bg-biru-aksen">Kontak</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main>
+        <!-- 2. Home (Hero Section) -->
+        <section id="home" class="py-24 md:py-32 flex items-center justify-center min-h-screen-75 bg-cover bg-center relative" 
+         style="background-image: url('sekolah.jpeg');">
+    
+    <div class="absolute inset-0 bg-biru-muda/70"></div>
+    
+    <div class="max-w-4xl mx-auto text-center px-4 relative z-10">
+        <h1 class="text-5xl md:text-7xl font-extrabold text-biru-aksen mb-4 leading-tight">
+            SELAMAT DATANG 
+        </h1>
+        <h2 class="text-2xl md:text-3xl text-gray-700 font-light mb-8">
+            Di Website Resmi SMP Negeri 2 Wonokerto
+        </h2>
+        <p class="text-lg text-gray-600 mb-10 max-w-2xl mx-auto">
+            Mencetak generasi unggul, berkarakter, dan siap menghadapi masa depan global dengan semangat belajar yang tinggi.
+        </p>
+        <a href="#profil" class="inline-block bg-biru-aksen text-white font-bold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 transform hover:scale-105">
+            Pelajari Lebih Lanjut
+        </a>
+    </div>
+</section>
+
+        <!-- 3. Profil Sekolah -->
+        <section id="profil" class="py-16 md:py-24 max-w-6xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-biru-aksen mb-12">Profil Sekolah</h3>
+            <div class="bg-white p-8 rounded-xl shadow-2xl border-t-4 border-biru-muda">
+                <p class="text-lg leading-relaxed text-gray-700 mb-6">
+                    SMP Negeri 2 Wonokerto didirikan pada tahun 1990 dengan komitmen untuk memberikan pendidikan berkualitas tinggi. Terletak di lingkungan yang asri dan kondusif, sekolah kami menjadi rumah kedua bagi siswa untuk berkembang secara akademis maupun non-akademis. Kami percaya bahwa setiap siswa memiliki potensi unik yang perlu digali dan diasah.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="p-4 bg-krem-dasar rounded-lg shadow-inner">
+                        <p class="text-4xl font-extrabold text-biru-muda">300+</p>
+                        <p class="text-gray-600">Total Siswa</p>
+                    </div>
+                    <div class="p-4 bg-krem-dasar rounded-lg shadow-inner">
+                        <p class="text-4xl font-extrabold text-biru-muda">45</p>
+                        <p class="text-gray-600">Guru & Staff Profesional</p>
+                    </div>
+                    <div class="p-4 bg-krem-dasar rounded-lg shadow-inner">
+                        <p class="text-4xl font-extrabold text-biru-muda">15+</p>
+                        <p class="text-gray-600">Ekstrakurikuler Aktif</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Visi dan Misi -->
+        <section id="visi-misi" class="bg-biru-muda/50 py-16 md:py-24">
+            <div class="max-w-6xl mx-auto px-4">
+                <h3 class="text-4xl font-bold text-center text-biru-aksen mb-12">Visi & Misi Sekolah</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Visi -->
+                    <div class="bg-white p-8 rounded-xl shadow-2xl">
+                        <h4 class="text-3xl font-semibold text-biru-aksen border-b-2 border-biru-muda pb-2 mb-4">Visi</h4>
+                        <p class="text-xl italic font-medium text-gray-700">
+                            "Mewujudkan Siswa yang Beriman, Cerdas, Mandiri, dan Berbudaya Lingkungan."
+                        </p>
+                    </div>
+                    
+                    <!-- Misi -->
+                    <div class="bg-white p-8 rounded-xl shadow-2xl">
+                        <h4 class="text-3xl font-semibold text-biru-aksen border-b-2 border-biru-muda pb-2 mb-4">Misi</h4>
+                        <ul class="space-y-3 text-gray-700 list-none pl-0">
+                            <li class="flex items-start"><span class="text-biru-muda text-2xl mr-3 leading-none">•</span> Meningkatkan keimanan dan ketakwaan melalui kegiatan keagamaan.</li>
+                            <li class="flex items-start"><span class="text-biru-muda text-2xl mr-3 leading-none">•</span> Mengembangkan potensi akademik dan non-akademik siswa.</li>
+                            <li class="flex items-start"><span class="text-biru-muda text-2xl mr-3 leading-none">•</span> Mendorong kemandirian dan jiwa kepemimpinan siswa.</li>
+                            <li class="flex items-start"><span class="text-biru-muda text-2xl mr-3 leading-none">•</span> Menciptakan lingkungan sekolah yang bersih, sehat, dan hijau.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Akademik -->
+        <section id="akademik" class="py-16 md:py-24 max-w-6xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-biru-aksen mb-12">Program Akademik</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Kurikulum -->
+                <div class="bg-white p-6 rounded-xl shadow-xl border-b-4 border-biru-muda hover:shadow-2xl transition">
+                    <h4 class="text-2xl font-semibold text-biru-aksen mb-3">Kurikulum Merdeka</h4>
+                    <p class="text-gray-700">Menerapkan kurikulum terbaru yang fokus pada pengembangan profil pelajar Pancasila dan pembelajaran berbasis proyek.</p>
+                </div>
+                <!-- Fasilitas -->
+                <div class="bg-white p-6 rounded-xl shadow-xl border-b-4 border-biru-muda hover:shadow-2xl transition">
+                    <h4 class="text-2xl font-semibold text-biru-aksen mb-3">Fasilitas Modern</h4>
+                    <p class="text-gray-700">Didukung oleh laboratorium komputer, sains, dan perpustakaan digital untuk mendukung proses belajar mengajar.</p>
+                </div>
+                <!-- Penilaian -->
+                <div class="bg-white p-6 rounded-xl shadow-xl border-b-4 border-biru-muda hover:shadow-2xl transition">
+                    <h4 class="text-2xl font-semibold text-biru-aksen mb-3">Penilaian Komprehensif</h4>
+                    <p class="text-gray-700">Sistem penilaian yang holistik, mencakup aspek pengetahuan, keterampilan, dan karakter siswa.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Prestasi -->
+        <section id="prestasi" class="bg-krem-dasar py-16 md:py-24 max-w-6xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-biru-aksen mb-12">Prestasi Sekolah</h3>
+            <div class="space-y-6">
+                <!-- Item Prestasi 1 -->
+                <div class="flex items-center bg-white p-6 rounded-xl shadow-lg border-l-8 border-biru-muda">
+                    <span class="text-4xl text-biru-aksen font-bold mr-6">🏆</span>
+                    <div>
+                        <p class="text-xl font-semibold text-gray-800">Juara 1 Lomba Cerdas Cermat Tingkat Kabupaten</p>
+                        <p class="text-sm text-gray-500">Tahun 2024 - Bidang Sains</p>
+                    </div>
+                </div>
+                <!-- Item Prestasi 2 -->
+                <div class="flex items-center bg-white p-6 rounded-xl shadow-lg border-l-8 border-biru-muda">
+                    <span class="text-4xl text-biru-aksen font-bold mr-6">🥇</span>
+                    <div>
+                        <p class="text-xl font-semibold text-gray-800">Medali Emas Olimpiade Matematika (Olimpiade Sains Nasional)</p>
+                        <p class="text-sm text-gray-500">Tahun 2023 - Atas Nama Budi Santoso</p>
+                    </div>
+                </div>
+                <!-- Item Prestasi 3 -->
+                <div class="flex items-center bg-white p-6 rounded-xl shadow-lg border-l-8 border-biru-muda">
+                    <span class="text-4xl text-biru-aksen font-bold mr-6">🎨</span>
+                    <div>
+                        <p class="text-xl font-semibold text-gray-800">Penghargaan Sekolah Adiwiyata Tingkat Provinsi</p>
+                        <p class="text-sm text-gray-500">Tahun 2022 - Kategori Lingkungan Hidup</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Ekstrakurikuler -->
+        <section id="ekstrakurikuler" class="bg-biru-muda/50 py-16 md:py-24 max-w-6xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-biru-aksen mb-12">Ekstrakurikuler</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-6 bg-white rounded-xl shadow-xl border-b-4 border-biru-aksen hover:bg-krem-dasar transition">
+                    <p class="text-4xl mb-3">⚽</p>
+                    <p class="font-semibold text-lg text-gray-800">Futsal</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-xl border-b-4 border-biru-aksen hover:bg-krem-dasar transition">
+                    <p class="text-4xl mb-3">🎵</p>
+                    <p class="font-semibold text-lg text-gray-800">Seni Musik (Band)</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-xl border-b-4 border-biru-aksen hover:bg-krem-dasar transition">
+                    <p class="text-4xl mb-3">🧑‍💻</p>
+                    <p class="font-semibold text-lg text-gray-800">Klub IT & Robotik</p>
+                </div>
+                <div class="p-6 bg-white rounded-xl shadow-xl border-b-4 border-biru-aksen hover:bg-krem-dasar transition">
+                    <p class="text-4xl mb-3">🏕️</p>
+                    <p class="font-semibold text-lg text-gray-800">Pramuka</p>
+                </div>
+            </div>
+            <p class="text-center mt-8 text-gray-600 italic">Dan masih banyak lagi pilihan ekstrakurikuler lainnya untuk menyalurkan minat dan bakat siswa!</p>
+        </section>
+
+        <!-- 8. Guru dan Staff (Tabel Nama dan Mapel) -->
+        <section id="guru" class="py-16 md:py-24 max-w-6xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-biru-aksen mb-12">Daftar Guru dan Staf Pengajar</h3>
+            
+            <div class="overflow-x-auto bg-white rounded-xl shadow-2xl border-t-4 border-biru-muda">
+                <table class="min-w-full divide-y divide-biru-muda">
+                    <thead>
+                        <tr class="bg-biru-muda text-biru-aksen">
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">
+                                Nama Lengkap
+                            </th>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider hidden sm:table-cell">
+                                Jabatan Utama
+                            </th>
+                            <th scope="col" class="px-6 py-4 text-left text-sm font-bold uppercase tracking-wider">
+                                Mata Pelajaran yang Diajar
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <!-- Data Guru 1 -->
+                        <tr class="hover:bg-krem-dasar transition duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-biru-aksen">
+                                Dr. (Cand.) Ratna Sari, M.Pd.
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 hidden sm:table-cell">
+                                Kepala Sekolah
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                Bahasa Indonesia
+                            </td>
+                        </tr>
+                        <!-- Data Guru 2 -->
+                        <tr class="hover:bg-krem-dasar transition duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-biru-aksen">
+                                Ahmad Dhani, S.Pd.
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 hidden sm:table-cell">
+                                Guru Mata Pelajaran
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                Matematika
+                            </td>
+                        </tr>
+                        <!-- Data Guru 3 -->
+                        <tr class="hover:bg-krem-dasar transition duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-biru-aksen">
+                                Siti Nurhaliza, A.Md.
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 hidden sm:table-cell">
+                                Tenaga Administrasi
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                Administrasi/Tata Usaha (Non-Guru)
+                            </td>
+                        </tr>
+                        <!-- Data Guru 4 -->
+                        <tr class="hover:bg-krem-dasar transition duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-biru-aksen">
+                                Drs. Eko Prasetyo
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 hidden sm:table-cell">
+                                Guru Mata Pelajaran
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                Ilmu Pengetahuan Sosial (IPS)
+                            </td>
+                        </tr>
+                        <!-- Data Guru 5 -->
+                        <tr class="hover:bg-krem-dasar transition duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-biru-aksen">
+                                Dewi Fatimah, S.Pd.
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 hidden sm:table-cell">
+                                Guru Mata Pelajaran
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                Ilmu Pengetahuan Alam (IPA)
+                            </td>
+                        </tr>
+                        <!-- Data Guru 6 -->
+                        <tr class="hover:bg-krem-dasar transition duration-200">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-biru-aksen">
+                                Bambang Wijaya, S.Or.
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 hidden sm:table-cell">
+                                Guru Mata Pelajaran
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                Pendidikan Jasmani
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="text-center mt-10 text-gray-600 italic">Daftar tenaga pendidik profesional yang siap membimbing siswa.</p>
+        </section>
+
+        <!-- 9. Galeri -->
+        <section id="galeri" class="bg-krem-dasar py-16 md:py-24 max-w-6xl mx-auto px-4">
+            <h3 class="text-4xl font-bold text-center text-biru-aksen mb-12">Galeri Foto Kegiatan</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                
+                <div class="w-full aspect-square relative rounded-lg shadow-xl overflow-hidden hover:opacity-90 transition duration-300">
+                    
+                    <img src="perpus.jpg" alt="Foto Perpustakaan" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-end justify-start p-3">
+                        <span class="text-white font-medium text-sm">Perpustakaan</span>
+                    </div>
+                </div>
+        
+                <div class="w-full aspect-square relative rounded-lg shadow-xl overflow-hidden hover:opacity-90 transition duration-300">
+                    <img src="olhrga.jpg" alt="Foto Kegiatan Olahraga" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-end justify-start p-3">
+                        <span class="text-white font-medium text-sm">Kegiatan Olahraga</span>
+                    </div>
+                </div>
+        
+                <div class="w-full aspect-square relative rounded-lg shadow-xl overflow-hidden hover:opacity-90 transition duration-300">
+                    <img src="seni .jpg" alt="Foto Pameran Seni" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-end justify-start p-3">
+                        <span class="text-white font-medium text-sm">Pameran Seni</span>
+                    </div>
+                </div>
+        
+                <div class="w-full aspect-square relative rounded-lg shadow-xl overflow-hidden hover:opacity-90 transition duration-300">
+                    <img src="upacara.jpg" alt="Foto Upacara Bendera" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black bg-opacity-30 flex items-end justify-start p-3">
+                        <span class="text-white font-medium text-sm">Upacara Bendera</span>
+                    </div>
+                </div>
+                
+            </div>
+            <p class="text-center mt-8 text-gray-600 italic">Jelajahi momen-momen terbaik di SMP N 2 Wonokerto!</p>
+        </section>
+
+        <!-- 10. Kontak & PPDB (Revisi di sini) -->
+        <section id="kontak" class="bg-biru-aksen py-16 md:py-24">
+            <div class="max-w-4xl mx-auto px-4 text-white">
+                <h3 class="text-4xl font-bold text-center mb-12 text-krem-dasar">Hubungi Kami & Info PPDB</h3>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- 1. Informasi Kontak -->
+                    <div class="space-y-4">
+                        <h4 class="text-2xl font-semibold text-biru-muda mb-4">Informasi Kontak Sekolah</h4>
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-4 text-biru-muda">📍</span>
+                            <div>
+                                <h5 class="font-semibold text-krem-dasar">Alamat</h5>
+                                <p class="text-sm text-gray-300">Jl. Pendidikan No. 2 Wonokerto, Kabupaten Wonogiri, Jawa Tengah 57611</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-4 text-biru-muda">📞</span>
+                            <div>
+                                <h5 class="font-semibold text-krem-dasar">Telepon</h5>
+                                <p class="text-sm text-gray-300">(028) 1234567</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <span class="text-2xl mr-4 text-biru-muda">📧</span>
+                            <div>
+                                <h5 class="font-semibold text-krem-dasar">Email</h5>
+                                <p class="text-sm text-gray-300">info@smpn2wonokerto.sch.id</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. PPDB & Formulir Kontak -->
+                    <div class="space-y-8">
+                        <!-- PPDB Info Block (BARU) -->
+                        <div class="bg-biru-muda p-6 rounded-xl shadow-xl border-b-4 border-krem-dasar text-gray-800">
+                            <h4 class="text-2xl font-bold text-biru-aksen mb-3 flex items-center">
+                                <span class="text-3xl mr-2">📣</span> INFO PPDB 2025/2026
+                            </h4>
+                            <p class="text-sm font-semibold mb-2">Status: <span class="text-green-700 font-bold">Pendaftaran Gelombang 1 Dibuka!</span></p>
+                            <p class="text-sm mb-4">Daftarkan putra/putri Anda sekarang juga. Kuota terbatas.</p>
+                            <a href="#" class="inline-block w-full text-center bg-biru-aksen text-white font-bold py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+                                Kunjungi Halaman Pendaftaran
+                            </a>
+                        </div>
+
+                        <!-- Formulir Kontak (Dummy) -->
+                        <form class="space-y-4 bg-biru-muda p-6 rounded-xl shadow-inner text-gray-800">
+                            <h4 class="text-xl font-bold text-biru-aksen">Kirim Pesan Cepat</h4>
+                            <input type="text" placeholder="Nama Anda" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" required>
+                            <input type="email" placeholder="Email Anda" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" required>
+                            <textarea placeholder="Pesan Anda" rows="3" class="w-full p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white" required></textarea>
+                            <button type="submit" class="w-full bg-biru-aksen text-white font-bold py-3 rounded-lg hover:bg-blue-700 transition duration-300">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-biru-aksen text-white/80 py-8">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2025 SMP Negeri 2 Wonokerto. Hak Cipta Dilindungi.</p>
+            <p class="text-sm mt-1">Didesain dengan nuansa Biru Muda & Krem Estetik.</p>
+        </div>
+    </footer>
+
+    <!-- Script JavaScript untuk Fungsionalitas Mobile Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            menuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Sembunyikan menu setelah link diklik (khusus mobile)
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
